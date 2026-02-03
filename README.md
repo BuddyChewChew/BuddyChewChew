@@ -6,11 +6,6 @@
 
 ### ⚙️ &nbsp;GitHub Analytics
 
-<p align="center">
-  <a href="https://github.com/fyough">
-    <img height="180em" src="https://github-readme-stats-eight-theta.vercel.app/api?username=fyough&show_icons=true&theme=algolia&include_all_commits=true&count_private=true"/>
-  </a>
-</p>
    
 <!--
 **fyough/fyough** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
