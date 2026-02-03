@@ -4,7 +4,7 @@
 
 ## Hi there 👋
 
-### ⚙️ &nbsp;GitHub Analytics
+![DiscordJS](https://img.shields.io/badge/discord.js-%232C3454.svg?style=for-the-badge&logo=Discord&logoColor=Blue) !
 
    
 <!--
