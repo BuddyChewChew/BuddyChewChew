@@ -3,7 +3,7 @@
 </div>
 
 ## 
-[https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg].[https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white](https://github.com/BuddyChewChew)
+[https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white](https://github.com/BuddyChewChew)
 ## 
 
 
