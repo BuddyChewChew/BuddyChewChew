@@ -13,14 +13,5 @@
 > Always review and test any code or links before implementing them in your projects. You assume all risks associated with the implementation of this information.
 
 ## 
-<p align="left">
-<a href="https://github.com/BuddyChewChew">
-<img alt="Awesome" src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg"/>
-</a>
-</p>
 
-
-
-
-
-[![Discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)][https://discord.gg/fnsWGDy2mm]|[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)[(https://buymeacoffee.com/buddychewchew]
+[![Discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)[https://discord.gg/fnsWGDy2mm]|[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)[https://buymeacoffee.com/buddychewchew]
