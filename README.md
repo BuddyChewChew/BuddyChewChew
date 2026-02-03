@@ -15,4 +15,4 @@
 
 [![Discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/fnsWGDy2mm)
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/buddychewchew)
-[![Donate In Crypto](https://img.shields.io/badge/Donate%20In%20Crypto-F7931A?style=for-the-badge&logo=bitcoin&logoColor=white)](YOUR_BITCOIN_ADDRESS_OR_LINK_HERE)
+[![Donate In Crypto](https://img.shields.io/badge/Donate%20In%20Crypto-F7931A?style=for-the-badge&logo=bitcoin&logoColor=white)](https://github.com/BuddyChewChew/My-Streams/blob/main/Donate/readme.md)
