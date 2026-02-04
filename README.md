@@ -10,7 +10,28 @@
   </a>
 </p>
 
-[![trophy](https://github-profile-trophy.vercel.app/?username=BuddyChewChew&theme=dracula)](https://github.com/ryo-ma/github-profile-trophy)
+<div align="center">
+
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=7B68EE&height=150&section=header&text=BuddyChewChew&fontSize=70&animation=fadeIn" />
+
+<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=35&pause=1000&color=7B68EE&center=true&vCenter=true&width=500&lines=Welcome+to+my+profile!;I'm+a+Creative+Developer;Let's+build+something+cool!&height=70" alt="Typing SVG" />
+
+<p align="center">
+  <img src="https://img.shields.io/github/stars/BuddyChewChew?style=for-the-badge&logo=github&color=4c1" alt="Stars">
+  <img src="https://img.shields.io/github/followers/BuddyChewChew?style=for-the-badge&logo=github&color=181717" alt="Followers">
+  <img src="https://komarev.com/ghpvc/?username=BuddyChewChew&style=for-the-badge&color=7B68EE" alt="Visitors">
+</p>
+
+</div>
+
+---
+
+### 🛠️ About Me
+I'm **BuddyChewChew**, a developer focused on creating clean, efficient, and visually appealing projects.
+
+* 🔭 I’m currently working on ...
+* 🌱 I’m currently learning ...
+* 💬 Ask me about ...
 
 ## 
 > DISCLAIMER: The scripts and links provided on this GitHub page are for informational and educational purposes only. No files are hosted here; all links and information are publicly available on the web. We do not claim responsibility for any issues, damages, or losses that may arise from the use of these scripts or links. Users are advised to use them at their own risk and discretion.
