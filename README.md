@@ -1,9 +1,8 @@
-![Stars](https://img.shields.io/github/stars/BuddyChewChew?style=for-the-badge&logo=github&color=4c1)|![Followers](https://img.shields.io/github/followers/BuddyChewChew?style=for-the-badge&logo=github&color=181717)![Visitors](https://visitor-badge.laobi.icu/badge?page_id=BuddyChewChew.BuddyChewChew)
 
 <p align="center">
-    ![Stars](https://img.shields.io/github/stars/BuddyChewChew?style=for-the-badge&logo=github&color=4c1)
-   [Followers](https://img.shields.io/github/followers/BuddyChewChew?style=for-the-badge&logo=github&color=181717)
-    <img src="https://img.shields.io/badge/Donate%20In%20Crypto-F7931A?style=for-the-badge&logo=bitcoin&logoColor=white" alt="Donate In Crypto">
+  <img src="https://img.shields.io/github/stars/BuddyChewChew?style=for-the-badge&logo=github&color=4c1" alt="Stars">
+  <img src="https://img.shields.io/github/followers/BuddyChewChew?style=for-the-badge&logo=github&color=181717" alt="Followers">
+  <img src="https://visitor-badge.laobi.icu/badge?page_id=BuddyChewChew.BuddyChewChew&style=for-the-badge" alt="Visitors">
 </p>
 
 ## 
