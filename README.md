@@ -2,7 +2,7 @@
 <p align="center">
   <img src="https://img.shields.io/github/stars/BuddyChewChew?style=for-the-badge&logo=github&color=4c1" alt="Stars">
   <img src="https://img.shields.io/github/followers/BuddyChewChew?style=for-the-badge&logo=github&color=181717" alt="Followers">
-  <img src="https://visitor-badge.laobi.icu/badge?page_id=BuddyChewChew.BuddyChewChew&style=for-the-badge" alt="Visitors">
+  <img src="https://img.shields.io/badge/dynamic/json?label=Visitors&query=value&url=https://api.countapi.xyz/hit/buddychewchew/visits&style=for-the-badge&color=blue" alt="Visitors">
 </p>
 
 ## 
