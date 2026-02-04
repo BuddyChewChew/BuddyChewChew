@@ -1,5 +1,4 @@
-![Stars](https://img.shields.io/github/stars/BuddyChewChew?style=for-the-badge&logo=github&color=4c1)|![Followers](https://img.shields.io/github/followers/BuddyChewChew?style=for-the-badge&logo=github&color=181717)
-Visitors	![Visitors](https://visitor-badge.laobi.icu/badge?page_id=BuddyChewChew.BuddyChewChew)
+![Stars](https://img.shields.io/github/stars/BuddyChewChew?style=for-the-badge&logo=github&color=4c1)|![Followers](https://img.shields.io/github/followers/BuddyChewChew?style=for-the-badge&logo=github&color=181717)![Visitors](https://visitor-badge.laobi.icu/badge?page_id=BuddyChewChew.BuddyChewChew)
 
 
 
