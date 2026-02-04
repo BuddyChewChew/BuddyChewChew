@@ -25,12 +25,12 @@
 
 <p align="center">
   <a href="https://discord.gg/fnsWGDy2mm">
-    <img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord">
+    <img src="https://img.shields.io/badge/Discord-2f2f2f?style=for-the-badge&logo=discord&logoColor=white" alt="Discord">
   </a>
   <a href="https://buymeacoffee.com/buddychewchew">
-    <img src="https://img.shields.io/badge/Buy%20Me%20A%20Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black" alt="Buy Me A Coffee">
+    <img src="https://img.shields.io/badge/Buy%20Me%20A%20Coffee-2f2f2f?style=for-the-badge&logo=buy-me-a-coffee&logoColor=white" alt="Buy Me A Coffee">
   </a>
   <a href="https://github.com/BuddyChewChew/My-Streams/blob/main/Donate/readme.md">
-    <img src="https://img.shields.io/badge/Donate%20In%20Crypto-F7931A?style=for-the-badge&logo=bitcoin&logoColor=white" alt="Donate In Crypto">
+    <img src="https://img.shields.io/badge/Donate%20In%20Crypto-2f2f2f?style=for-the-badge&logo=bitcoin&logoColor=white" alt="Donate In Crypto">
   </a>
 </p>
