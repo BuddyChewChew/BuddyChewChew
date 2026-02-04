@@ -12,7 +12,7 @@
 
 <div align="center">
 
-<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=35&pause=1000&color=7B68EE&center=true&vCenter=true&width=500&lines=For+informational+and+educational+purposes+only!;I'm+a+Creative+Developer;Let's+build+something+cool!&height=70" alt="Typing SVG" />
+<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=35&pause=1000&color=7B68EE&center=true&vCenter=true&width=500&lines=For+informational+and+educational+purposes+only!;&height=70" alt="Typing SVG" />
 
 ## 
 > DISCLAIMER: The scripts and links provided on this GitHub page are for informational and educational purposes only. No files are hosted here; all links and information are publicly available on the web. We do not claim responsibility for any issues, damages, or losses that may arise from the use of these scripts or links. Users are advised to use them at their own risk and discretion.
