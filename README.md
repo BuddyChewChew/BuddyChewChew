@@ -12,8 +12,6 @@
 
 <div align="center">
 
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=7B68EE&height=150&section=header&text=BuddyChewChew&fontSize=70&animation=fadeIn" />
-
 <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=35&pause=1000&color=7B68EE&center=true&vCenter=true&width=500&lines=Welcome+to+my+profile!;I'm+a+Creative+Developer;Let's+build+something+cool!&height=70" alt="Typing SVG" />
 
 <p align="center">
