@@ -1,16 +1,4 @@
-## GitHub Stats
-
-<img src="https://github-readme-stats.vercel.app/api?username=BuddyChewChew&show_icons=true&count_private=true&theme=radical" alt="GitHub İstatistikleri" />
-
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=BuddyChewChew&layout=compact&theme=radical" alt="En Çok Kullanılan Diller" />
-
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=BuddyChewChew&theme=radical" alt="GitHub Streak" />
-
-<img src="https://profile-counter.glitch.me/BuddyChewChew/count.svg?" alt="visitors count" />
-
-## GitHub Activity Graph
-
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=BuddyChewChew&radius=16&theme=rogue&area=true&order=5" height="300" alt="activity-graph" />
+![Stars](https://img.shields.io/github/stars/BuddyChewChew?style=for-the-badge&logo=github&color=4c1)
 
 
 
