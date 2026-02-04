@@ -1,12 +1,4 @@
-![Stars](https://img.shields.io/github/stars/BuddyChewChew?style=for-the-badge&logo=github&color=4c1) | ![Followers](https://img.shields.io/github/followers/BuddyChewChew?style=for-the-badge&logo=github&color=181717)![Visitors](https://visitor-badge.laobi.icu/badge?page_id=BuddyChewChew.BuddyChewChew)
-
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=BuddyChewChew&show_icons=true&theme=dracula" alt="BuddyChewChew's GitHub stats" />
-</p>
-
-
-
-
+![Stars](https://img.shields.io/github/stars/BuddyChewChew?style=for-the-badge&logo=github&color=4c1)|![Followers](https://img.shields.io/github/followers/BuddyChewChew?style=for-the-badge&logo=github&color=181717)![Visitors](https://visitor-badge.laobi.icu/badge?page_id=BuddyChewChew.BuddyChewChew)
 
 ## 
 > DISCLAIMER: The scripts and links provided on this GitHub page are for informational and educational purposes only. No files are hosted here; all links and information are publicly available on the web. We do not claim responsibility for any issues, damages, or losses that may arise from the use of these scripts or links. Users are advised to use them at their own risk and discretion.
