@@ -8,13 +8,11 @@
 
 <img src="https://profile-counter.glitch.me/BuddyChewChew/count.svg?" alt="visitors count" />
 
-## GitHub Trophies
-
-<img src="https://github-profile-trophy.vercel.app/?username=BuddyChewChew" alt="trophy" />
-
 ## GitHub Activity Graph
 
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=BuddyChewChew&radius=16&theme=react&area=true&order=5" height="300" alt="activity-graph" />
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=BuddyChewChew&radius=16&theme=rogue&area=true&order=5" height="300" alt="activity-graph" />
+
+
 
 
 
