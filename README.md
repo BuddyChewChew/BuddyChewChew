@@ -1,5 +1,11 @@
 ![Stars](https://img.shields.io/github/stars/BuddyChewChew?style=for-the-badge&logo=github&color=4c1)|![Followers](https://img.shields.io/github/followers/BuddyChewChew?style=for-the-badge&logo=github&color=181717)![Visitors](https://visitor-badge.laobi.icu/badge?page_id=BuddyChewChew.BuddyChewChew)
 
+<p align="center">
+    ![Stars](https://img.shields.io/github/stars/BuddyChewChew?style=for-the-badge&logo=github&color=4c1)
+   [Followers](https://img.shields.io/github/followers/BuddyChewChew?style=for-the-badge&logo=github&color=181717)
+    <img src="https://img.shields.io/badge/Donate%20In%20Crypto-F7931A?style=for-the-badge&logo=bitcoin&logoColor=white" alt="Donate In Crypto">
+</p>
+
 ## 
 > DISCLAIMER: The scripts and links provided on this GitHub page are for informational and educational purposes only. No files are hosted here; all links and information are publicly available on the web. We do not claim responsibility for any issues, damages, or losses that may arise from the use of these scripts or links. Users are advised to use them at their own risk and discretion.
 >
