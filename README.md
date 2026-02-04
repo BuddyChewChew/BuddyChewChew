@@ -16,12 +16,6 @@
 ## 
 
 <p align="center">
-  <img src="https://img.shields.io/github/stars/BuddyChewChew?style=for-the-badge&logo=github&color=4c1" alt="Stars">
-  <img src="https://img.shields.io/github/followers/BuddyChewChew?style=for-the-badge&logo=github&color=181717" alt="Followers">
-  <img src="https://komarev.com/ghpvc/?username=BuddyChewChew&style=for-the-badge&color=blue" alt="Visitors">
-</p>
-
-<p align="center">
   <img src="https://img.shields.io/github/stars/BuddyChewChew?style=for-the-badge&logo=github&color=2f2f2f" alt="Stars">
   <img src="https://img.shields.io/github/followers/BuddyChewChew?style=for-the-badge&logo=github&color=2f2f2f" alt="Followers">
   <img src="https://komarev.com/ghpvc/?username=BuddyChewChew&style=for-the-badge&color=2f2f2f" alt="Visitors">
