@@ -16,7 +16,7 @@ def get_status_info(url):
         response = requests.get(url, timeout=10)
         if response.status_code == 200:
             count = len(re.findall(r'^#EXTINF', response.text, re.MULTILINE))
-            # Green pill badge
+            # GitHub Badge
             badge = "![Online](https://img.shields.io/badge/-Online-31c854?style=flat-square)"
             return badge, count, "🟢 Online"
         return "![Offline](https://img.shields.io/badge/-Offline-critical?style=flat-square)", 0, "🔴 Offline"
@@ -43,7 +43,6 @@ def update_dashboard():
     now = datetime.now().strftime("%Y-%m-%d %H:%M UTC")
     total_channels = 0
     
-    # Clean Header
     content = [
         "# 📡 Stream Network Status",
         f"**Last Sync:** `{now}`",
@@ -58,12 +57,12 @@ def update_dashboard():
         badge, count, text_status = get_status_info(stream['url'])
         total_channels += count
         
-        # GitHub README Layout: 📺 [Badge] Name: (count channels)
-        line_text = f"📺 {badge} **{stream['name']}**: ({count} channels)"
-        content.append(f"| {line_text} | [M3U8 Link]({stream['url']}) |")
+        # GitHub README Table Layout
+        github_line = f"📺 {badge} **{stream['name']}**: ({count} channels)"
+        content.append(f"| {github_line} | [M3U8 Link]({stream['url']}) |")
         
-        # Discord Layout (keeps the text status as requested)
-        discord_report.append(f"📺 **{stream['name']}**: {text_status} ({count} channels)")
+        # FIXED Discord Layout: TV emoji -> Green Circle -> Status -> Name
+        discord_report.append(f"📺 {text_status} **{stream['name']}**: ({count} channels)")
 
     content.append(f"\n> **Total Network Capacity:** `{total_channels}` Channels")
     
