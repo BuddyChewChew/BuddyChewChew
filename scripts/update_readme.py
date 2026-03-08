@@ -3,7 +3,7 @@ import re
 import os
 from datetime import datetime
 
-# 1. Your high-priority static streams (Always at the top)
+# Exact filenames from your app-m3u-generator/playlists directory
 STREAMS = [
     {"name": "Live Events Filter", "url": "https://raw.githubusercontent.com/BuddyChewChew/sports/refs/heads/main/liveeventsfilter.m3u8"},
     {"name": "Roxie Streams", "url": "https://raw.githubusercontent.com/BuddyChewChew/sports/refs/heads/main/Roxiestreams.m3u"},
@@ -11,29 +11,37 @@ STREAMS = [
     {"name": "Buddy Live V1", "url": "https://raw.githubusercontent.com/BuddyChewChew/buddylive/refs/heads/main/buddylive_v1.m3u"},
     {"name": "The TV App", "url": "https://raw.githubusercontent.com/BuddyChewChew/My-Streams/refs/heads/main/TheTVApp.m3u8"},
     {"name": "TV Main", "url": "https://raw.githubusercontent.com/BuddyChewChew/My-Streams/refs/heads/main/tv.m3u"},
-    {"name": "AX1S", "url": "https://raw.githubusercontent.com/BuddyChewChew/My-Streams/refs/heads/main/AX1S.m3u8"}
+    {"name": "AX1S", "url": "https://raw.githubusercontent.com/BuddyChewChew/My-Streams/refs/heads/main/AX1S.m3u8"},
+    # Plex Regional Playlists
+    {"name": "Plex All", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_all.m3u"},
+    {"name": "Plex AU", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_au.m3u"},
+    {"name": "Plex CA", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_ca.m3u"},
+    {"name": "Plex ES", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_es.m3u"},
+    {"name": "Plex FR", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_fr.m3u"},
+    {"name": "Plex GB", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_gb.m3u"},
+    {"name": "Plex MX", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_mx.m3u"},
+    {"name": "Plex NZ", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_nz.m3u"},
+    {"name": "Plex US", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_us.m3u"},
+    # PlutoTV Regional Playlists
+    {"name": "PlutoTV All", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_all.m3u"},
+    {"name": "PlutoTV AU", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_au.m3u"},
+    {"name": "PlutoTV BR", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_br.m3u"},
+    {"name": "PlutoTV CA", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_ca.m3u"},
+    {"name": "PlutoTV DE", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_de.m3u"},
+    {"name": "PlutoTV DK", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_dk.m3u"},
+    {"name": "PlutoTV ES", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_es.m3u"},
+    {"name": "PlutoTV FR", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_fr.m3u"},
+    {"name": "PlutoTV GB", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_gb.m3u"},
+    {"name": "PlutoTV IT", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_it.m3u"},
+    {"name": "PlutoTV MX", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_mx.m3u"},
+    {"name": "PlutoTV NO", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_no.m3u"},
+    {"name": "PlutoTV SE", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_se.m3u"},
+    {"name": "PlutoTV US", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_us.m3u"},
+    # Other FAST Services
+    {"name": "Roku All", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/roku_all.m3u"},
+    {"name": "SamsungTVPlus All", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_all.m3u"},
+    {"name": "Tubi All", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/tubi_all.m3u"}
 ]
-
-def get_dynamic_streams():
-    """Automatically fetches all .m3u files from the playlist directory."""
-    api_url = "https://api.github.com/repos/BuddyChewChew/app-m3u-generator/contents/playlist"
-    dynamic_list = []
-    try:
-        # No API key needed for 60 requests/hour; GitHub Actions handles this easily
-        response = requests.get(api_url, timeout=10)
-        if response.status_code == 200:
-            files = response.json()
-            for file in files:
-                if file['name'].endswith('.m3u'):
-                    # Clean up 'samsung.m3u' to 'Samsung'
-                    clean_name = file['name'].replace('.m3u', '').replace('.m3u8', '').capitalize()
-                    dynamic_list.append({
-                        "name": clean_name,
-                        "url": file['download_url']
-                    })
-    except Exception as e:
-        print(f"Error fetching dynamic streams: {e}")
-    return dynamic_list
 
 def get_status_info(url):
     try:
@@ -48,12 +56,9 @@ def get_status_info(url):
 
 def send_to_discord(report_lines, total_channels):
     webhook_url = os.getenv("DISCORD_WEBHOOK")
-    if not webhook_url:
-        return
-
+    if not webhook_url: return
     status_text = "\n".join(report_lines)
     description = f"{status_text}\n\n**Total Network Capacity:** `{total_channels}` Channels"
-
     data = {
         "username": "Stream Health Monitor",
         "embeds": [{
@@ -68,36 +73,18 @@ def send_to_discord(report_lines, total_channels):
 def update_dashboard():
     now = datetime.now().strftime("%Y-%m-%d %H:%M UTC")
     total_channels = 0
-    
-    # Combine your manual list with the auto-discovered list
-    all_streams = STREAMS + get_dynamic_streams()
-    
-    content = [
-        "# 📡 Stream Network Status",
-        f"**Last Sync:** `{now}`",
-        "",
-        "| 📺 Repo Streams | Direct Access |",
-        "| :--- | :--- |"
-    ]
-    
+    content = ["# 📡 Stream Network Status", f"**Last Sync:** `{now}`", "", "| 📺 Repo Streams | Direct Access |", "| :--- | :--- |"]
     discord_report = []
 
-    for stream in all_streams:
+    for stream in STREAMS:
         badge, count, text_status = get_status_info(stream['url'])
         total_channels += count
-        
-        # GitHub README Table Layout
-        github_line = f"📺 {badge} **{stream['name']}**: ({count} channels)"
-        content.append(f"| {github_line} | [M3U8 Link]({stream['url']}) |")
-        
-        # Discord Layout: TV -> Status -> Name
+        content.append(f"| 📺 {badge} **{stream['name']}**: ({count} channels) | [M3U8 Link]({stream['url']}) |")
         discord_report.append(f"📺 {text_status} **{stream['name']}**: ({count} channels)")
 
     content.append(f"\n> **Total Network Capacity:** `{total_channels}` Channels")
-    
     with open("README.md", "w", encoding="utf-8") as f:
         f.write("\n".join(content))
-    
     send_to_discord(discord_report, total_channels)
 
 if __name__ == "__main__":
