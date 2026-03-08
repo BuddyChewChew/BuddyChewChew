@@ -2,8 +2,8 @@ name: 🔄 Update Profile Dashboard
 
 on:
   schedule:
-    - cron: '0 * * * *' # Every hour
-  workflow_dispatch:
+    - cron: '0 * * * *'  # Runs at the start of every hour
+  workflow_dispatch:     # Allows you to click "Run workflow" manually
 
 permissions:
   contents: write
@@ -14,20 +14,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - name: Set up Python
+      - name: 🐍 Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Install dependencies
+      - name: 📦 Install dependencies
         run: pip install requests
 
-      - name: Update README
+      - name: 🛰️ Run Dashboard Sync
         run: python scripts/update_readme.py
 
-      - name: Commit changes
+      - name: 💾 Commit & Push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions@users.noreply.github.com"
           git add README.md
-          git diff --quiet && git diff --staged --quiet || (git commit -m "📡 Dashboard Sync" && git push)
+          git diff --quiet && git diff --staged --quiet || (git commit -m "📡 Dashboard Update: $(date)" && git push)
