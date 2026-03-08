@@ -22,16 +22,20 @@ def get_status_info(url):
     except:
         return "![Down](https://img.shields.io/badge/-Down-grey?style=flat-square)", 0, "⚪ Down"
 
-def send_to_discord(report_lines):
+def send_to_discord(report_lines, total_channels):
     webhook_url = os.getenv("DISCORD_WEBHOOK")
     if not webhook_url:
         return
 
+    # Joins the stream statuses and adds the capacity summary at the bottom
+    status_text = "\n".join(report_lines)
+    description = f"{status_text}\n\n**Total Network Capacity:** `{total_channels}` Channels"
+
     data = {
-        "username": "Stream Health Monitor",  # Changed from Buddy Monitor
+        "username": "Stream Health Monitor",
         "embeds": [{
             "title": "📡 Stream Network Status",
-            "description": "\n".join(report_lines),
+            "description": description,
             "color": 3066993,
             "timestamp": datetime.utcnow().isoformat()
         }]
@@ -60,7 +64,7 @@ def update_dashboard():
         github_line = f"📺 {badge} **{stream['name']}**: ({count} channels)"
         content.append(f"| {github_line} | [M3U8 Link]({stream['url']}) |")
         
-        # Discord Layout: TV emoji -> Green Circle -> Status -> Name
+        # Discord Layout: TV -> Green Circle -> Status -> Name
         discord_report.append(f"📺 {text_status} **{stream['name']}**: ({count} channels)")
 
     content.append(f"\n> **Total Network Capacity:** `{total_channels}` Channels")
@@ -68,7 +72,8 @@ def update_dashboard():
     with open("README.md", "w", encoding="utf-8") as f:
         f.write("\n".join(content))
     
-    send_to_discord(discord_report)
+    # Passing the total count to the discord notification
+    send_to_discord(discord_report, total_channels)
 
 if __name__ == "__main__":
     update_dashboard()
