@@ -1,12 +1,13 @@
-# 📺 My Live Stream Dashboard
+# 🚀 BuddyChewChew's Stream Dashboard
 
-Last Updated: `2026-03-08 21:01:12 UTC`
+> **Last System Check:** `2026-03-08 21:08:32 UTC`
 
-| Stream Name | Status | M3U Link |
+| Stream Source | Status | Direct Link |
 | :--- | :--- | :--- |
-| 🏅 SS99 Live | ❌ Offline | [Link](https://raw.githubusercontent.com/BuddyChewChew/SS99/main/SS99.m3u) |
-| 🏐 Live Events | ✅ Online | [Link](https://raw.githubusercontent.com/BuddyChewChew/sports/main/liveeventsfilter.m3u8) |
+| **🏅 Live Events Filter** | 🟢 Online | [M3U8 Link](https://raw.githubusercontent.com/BuddyChewChew/sports/refs/heads/main/liveeventsfilter.m3u8) |
+| **📺 Roxie Streams** | 🟢 Online | [M3U8 Link](https://raw.githubusercontent.com/BuddyChewChew/sports/refs/heads/main/Roxiestreams.m3u) |
+| **⚡ Power V2** | 🟢 Online | [M3U8 Link](https://raw.githubusercontent.com/BuddyChewChew/sports/refs/heads/main/powerv2/powerv2.m3u8) |
 
 
 ---
-*This dashboard updates automatically every hour.*
+*Dashboard auto-refreshes every hour via GitHub Actions.*
