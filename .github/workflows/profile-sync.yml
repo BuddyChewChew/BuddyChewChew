@@ -13,7 +13,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+        with:
+          fetch-depth: 0 # Fetches all history so rebase works correctly
+
       - name: 🐍 Set up Python
         uses: actions/setup-python@v5
         with:
@@ -29,5 +31,16 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions@users.noreply.github.com"
+          
           git add README.md
-          git diff --quiet && git diff --staged --quiet || (git commit -m "📡 Dashboard Update: $(date)" && git push)
+          
+          # Only proceed if there are actual changes to the README
+          if ! git diff --cached --quiet; then
+            git commit -m "📡 Dashboard Update: $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+            
+            # Pull latest changes and rebase to avoid push conflicts
+            git pull --rebase origin main
+            git push origin main
+          else
+            echo "✅ No changes detected in stream status."
+          fi
