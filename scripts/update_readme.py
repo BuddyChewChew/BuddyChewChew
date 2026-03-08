@@ -16,7 +16,6 @@ def get_status_info(url):
         response = requests.get(url, timeout=10)
         if response.status_code == 200:
             count = len(re.findall(r'^#EXTINF', response.text, re.MULTILINE))
-            # GitHub Badge
             badge = "![Online](https://img.shields.io/badge/-Online-31c854?style=flat-square)"
             return badge, count, "🟢 Online"
         return "![Offline](https://img.shields.io/badge/-Offline-critical?style=flat-square)", 0, "🔴 Offline"
@@ -29,7 +28,7 @@ def send_to_discord(report_lines):
         return
 
     data = {
-        "username": "Buddy Monitor",
+        "username": "Stream Health Monitor",  # Changed from Buddy Monitor
         "embeds": [{
             "title": "📡 Stream Network Status",
             "description": "\n".join(report_lines),
@@ -61,7 +60,7 @@ def update_dashboard():
         github_line = f"📺 {badge} **{stream['name']}**: ({count} channels)"
         content.append(f"| {github_line} | [M3U8 Link]({stream['url']}) |")
         
-        # FIXED Discord Layout: TV emoji -> Green Circle -> Status -> Name
+        # Discord Layout: TV emoji -> Green Circle -> Status -> Name
         discord_report.append(f"📺 {text_status} **{stream['name']}**: ({count} channels)")
 
     content.append(f"\n> **Total Network Capacity:** `{total_channels}` Channels")
