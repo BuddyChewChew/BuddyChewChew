@@ -3,7 +3,6 @@ import re
 import os
 from datetime import datetime
 
-# The complete list of your stream sources
 STREAMS = [
     {"name": "Live Events Filter", "url": "https://raw.githubusercontent.com/BuddyChewChew/sports/refs/heads/main/liveeventsfilter.m3u8"},
     {"name": "Roxie Streams", "url": "https://raw.githubusercontent.com/BuddyChewChew/sports/refs/heads/main/Roxiestreams.m3u"},
@@ -12,62 +11,41 @@ STREAMS = [
     {"name": "The TV App", "url": "https://raw.githubusercontent.com/BuddyChewChew/My-Streams/refs/heads/main/TheTVApp.m3u8"}
 ]
 
-def get_stream_info(url):
+def get_status_info(url):
     try:
-        response = requests.get(url, timeout=15)
+        response = requests.get(url, timeout=10)
         if response.status_code == 200:
-            channel_count = len(re.findall(r'^#EXTINF', response.text, re.MULTILINE))
-            return "🟢 Online", channel_count
-        return "🔴 Offline", 0
-    except Exception:
-        return "⚪ Down", 0
-
-def send_to_discord(report_lines):
-    webhook_url = os.getenv("DISCORD_WEBHOOK")
-    if not webhook_url:
-        return
-
-    description = "\n".join(report_lines)
-    data = {
-        "username": "Stream Health Monitor",
-        "embeds": [{
-            "title": "📡 Stream Network Status Report",
-            "description": description,
-            "color": 3066993,
-            "timestamp": datetime.utcnow().isoformat()
-        }]
-    }
-    requests.post(webhook_url, json=data)
+            count = len(re.findall(r'^#EXTINF', response.text, re.MULTILINE))
+            # Compact green badge
+            badge = "![Online](https://img.shields.io/badge/-Online-31c854?style=flat-square)"
+            return badge, count
+        return "![Offline](https://img.shields.io/badge/-Offline-critical?style=flat-square)", 0
+    except:
+        return "![Down](https://img.shields.io/badge/-Down-grey?style=flat-square)", 0
 
 def update_dashboard():
-    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S UTC")
+    now = datetime.now().strftime("%Y-%m-%d %H:%M UTC")
     total_channels = 0
     
     content = [
-        "# 🚀 BuddyChewChew's Stream Network",
-        f"> **System Health Check:** `{now}`",
+        "# 🚀 BuddyChewChew Stream Network",
+        f"**Last Sync:** `{now}`",
         "",
-        "| 📺 Repo Streams | Status | Channels | Direct Link |",
-        "| :--- | :--- | :--- | :--- |"
+        "| 📺 Repo Streams | Channels | M3U Link |",
+        "| :--- | :--- | :--- |"
     ]
-    
-    discord_report = []
 
     for stream in STREAMS:
-        status, count = get_stream_info(stream['url'])
+        badge, count = get_status_info(stream['url'])
         total_channels += count
-        # Table formatting with 📺 prefix for all repos
-        line = f"| 📺 **{stream['name']}** | {status} | `{count}` | [M3U/8 Link]({stream['url']}) |"
+        # This places the badge right after the TV emoji and name
+        line = f"| 📺 {badge} **{stream['name']}** | `{count}` | [Direct Link]({stream['url']}) |"
         content.append(line)
-        discord_report.append(f"📺 **{stream['name']}**: {status} ({count} channels)")
 
-    content.append(f"\n**Total Network Capacity:** `{total_channels}` Channels")
-    content.append("\n---\n*Dashboard auto-refreshes every hour. Powered by GitHub Actions.*")
-
+    content.append(f"\n> **Total Network Capacity:** `{total_channels}` Channels")
+    
     with open("README.md", "w", encoding="utf-8") as f:
         f.write("\n".join(content))
-    
-    send_to_discord(discord_report)
 
 if __name__ == "__main__":
     update_dashboard()
