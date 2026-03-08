@@ -1,32 +1,37 @@
 import requests
 from datetime import datetime
 
-# List of your repos and the raw files you want to track
+# The specific links you provided
 STREAMS = [
-    {"name": "🏅 SS99 Live", "url": "https://raw.githubusercontent.com/BuddyChewChew/SS99/main/SS99.m3u"},
-    {"name": "🏐 Live Events", "url": "https://raw.githubusercontent.com/BuddyChewChew/sports/main/liveeventsfilter.m3u8"}
+    {"name": "🏅 Live Events Filter", "url": "https://raw.githubusercontent.com/BuddyChewChew/sports/refs/heads/main/liveeventsfilter.m3u8"},
+    {"name": "📺 Roxie Streams", "url": "https://raw.githubusercontent.com/BuddyChewChew/sports/refs/heads/main/Roxiestreams.m3u"},
+    {"name": "⚡ Power V2", "url": "https://raw.githubusercontent.com/BuddyChewChew/sports/refs/heads/main/powerv2/powerv2.m3u8"}
 ]
 
 def check_status(url):
     try:
-        r = requests.head(url, timeout=5)
-        return "✅ Online" if r.status_code == 200 else "❌ Offline"
+        # We use a GET request but only download the first few bytes to check if it's active
+        r = requests.get(url, timeout=10, stream=True)
+        if r.status_code == 200:
+            return "🟢 Online"
+        return "🔴 Offline"
     except:
-        return "⚠️ Error"
+        return "⚪ Down"
 
 def generate_readme():
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S UTC")
     
-    content = f"# 📺 My Live Stream Dashboard\n\n"
-    content += f"Last Updated: `{timestamp}`\n\n"
-    content += "| Stream Name | Status | M3U Link |\n"
+    # This matches the style of a GitHub Profile README
+    content = f"# 🚀 BuddyChewChew's Stream Dashboard\n\n"
+    content += f"> **Last System Check:** `{timestamp}`\n\n"
+    content += "| Stream Source | Status | Direct Link |\n"
     content += "| :--- | :--- | :--- |\n"
     
     for stream in STREAMS:
         status = check_status(stream['url'])
-        content += f"| {stream['name']} | {status} | [Link]({stream['url']}) |\n"
+        content += f"| **{stream['name']}** | {status} | [M3U8 Link]({stream['url']}) |\n"
     
-    content += "\n\n---\n*This dashboard updates automatically every hour.*"
+    content += "\n\n---\n*Dashboard auto-refreshes every hour via GitHub Actions.*"
     
     with open("README.md", "w", encoding="utf-8") as f:
         f.write(content)
