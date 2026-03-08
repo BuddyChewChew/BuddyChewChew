@@ -25,6 +25,9 @@ jobs:
         run: pip install requests
 
       - name: 🛰️ Run Dashboard Sync
+        env:
+          # This pulls the secret you saved in GitHub Settings -> Secrets
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: python scripts/update_readme.py
 
       - name: 💾 Commit & Push
