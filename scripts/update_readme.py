@@ -16,6 +16,7 @@ def get_status_info(url):
         response = requests.get(url, timeout=10)
         if response.status_code == 200:
             count = len(re.findall(r'^#EXTINF', response.text, re.MULTILINE))
+            # Green Shield badge for the neat table look
             badge = "![Online](https://img.shields.io/badge/-Online-31c854?style=flat-square)"
             return badge, count, "🟢 Online"
         return "![Offline](https://img.shields.io/badge/-Offline-critical?style=flat-square)", 0, "🔴 Offline"
@@ -23,14 +24,12 @@ def get_status_info(url):
         return "![Down](https://img.shields.io/badge/-Down-grey?style=flat-square)", 0, "⚪ Down"
 
 def send_to_discord(report_lines):
-    # This looks for the secret you added in GitHub Settings
     webhook_url = os.getenv("DISCORD_WEBHOOK")
     if not webhook_url:
-        print("Error: DISCORD_WEBHOOK secret not found!")
         return
 
     data = {
-        "username": "Stream Monitor",
+        "username": "Buddy Monitor",
         "embeds": [{
             "title": "📡 Stream Network Status",
             "description": "\n".join(report_lines),
@@ -44,8 +43,9 @@ def update_dashboard():
     now = datetime.now().strftime("%Y-%m-%d %H:%M UTC")
     total_channels = 0
     
+    # Updated Header as requested
     content = [
-        "# 🚀 BuddyChewChew Stream Network",
+        "# 📡 Stream Network Status",
         f"**Last Sync:** `{now}`",
         "",
         "| 📺 Repo Streams | Channels | M3U Link |",
@@ -57,18 +57,17 @@ def update_dashboard():
     for stream in STREAMS:
         badge, count, text_status = get_status_info(stream['url'])
         total_channels += count
-        # Update Table
+        
+        # Row layout: 📺 [Badge] [Repo Name]
         content.append(f"| 📺 {badge} **{stream['name']}** | `{count}` | [Direct Link]({stream['url']}) |")
-        # Update Discord List
+        
         discord_report.append(f"📺 **{stream['name']}**: {text_status} (`{count}` channels)")
 
     content.append(f"\n> **Total Network Capacity:** `{total_channels}` Channels")
     
-    # Save the README
     with open("README.md", "w", encoding="utf-8") as f:
         f.write("\n".join(content))
     
-    # Trigger the Discord post
     send_to_discord(discord_report)
 
 if __name__ == "__main__":
