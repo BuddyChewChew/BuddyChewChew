@@ -16,7 +16,7 @@ def get_status_info(url):
         response = requests.get(url, timeout=10)
         if response.status_code == 200:
             count = len(re.findall(r'^#EXTINF', response.text, re.MULTILINE))
-            # Green Shield badge for the neat table look
+            # Green pill badge
             badge = "![Online](https://img.shields.io/badge/-Online-31c854?style=flat-square)"
             return badge, count, "🟢 Online"
         return "![Offline](https://img.shields.io/badge/-Offline-critical?style=flat-square)", 0, "🔴 Offline"
@@ -43,13 +43,13 @@ def update_dashboard():
     now = datetime.now().strftime("%Y-%m-%d %H:%M UTC")
     total_channels = 0
     
-    # Updated Header as requested
+    # Clean Header
     content = [
         "# 📡 Stream Network Status",
         f"**Last Sync:** `{now}`",
         "",
-        "| 📺 Repo Streams | Channels | M3U Link |",
-        "| :--- | :--- | :--- |"
+        "| 📺 Repo Streams | Direct Access |",
+        "| :--- | :--- |"
     ]
     
     discord_report = []
@@ -58,10 +58,12 @@ def update_dashboard():
         badge, count, text_status = get_status_info(stream['url'])
         total_channels += count
         
-        # Row layout: 📺 [Badge] [Repo Name]
-        content.append(f"| 📺 {badge} **{stream['name']}** | `{count}` | [Direct Link]({stream['url']}) |")
+        # GitHub README Layout: 📺 [Badge] Name: (count channels)
+        line_text = f"📺 {badge} **{stream['name']}**: ({count} channels)"
+        content.append(f"| {line_text} | [M3U8 Link]({stream['url']}) |")
         
-        discord_report.append(f"📺 **{stream['name']}**: {text_status} (`{count}` channels)")
+        # Discord Layout (keeps the text status as requested)
+        discord_report.append(f"📺 **{stream['name']}**: {text_status} ({count} channels)")
 
     content.append(f"\n> **Total Network Capacity:** `{total_channels}` Channels")
     
