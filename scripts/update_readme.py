@@ -3,7 +3,7 @@ import re
 import os
 from datetime import datetime
 
-# Full manual list with your requested icons and regional files
+# Full list strictly following your repository file structure
 STREAMS = [
     {"heading": "⭐ Primary Streams"},
     {"name": "Live Events Filter", "url": "https://raw.githubusercontent.com/BuddyChewChew/sports/refs/heads/main/liveeventsfilter.m3u8"},
@@ -28,7 +28,6 @@ STREAMS = [
     {"heading": "▶️ PlutoTV Regional"},
     {"name": "PlutoTV All", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_all.m3u"},
     {"name": "PlutoTV AT", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_at.m3u"},
-    {"name": "PlutoTV AU", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_au.m3u"},
     {"name": "PlutoTV BR", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_br.m3u"},
     {"name": "PlutoTV CA", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_ca.m3u"},
     {"name": "PlutoTV DE", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_de.m3u"},
@@ -42,9 +41,22 @@ STREAMS = [
     {"name": "PlutoTV SE", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_se.m3u"},
     {"name": "PlutoTV US", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_us.m3u"},
     
+    {"heading": "▶️ SamsungTVPlus Regional"},
+    {"name": "Samsung All", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_all.m3u"},
+    {"name": "Samsung AT", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_at.m3u"},
+    {"name": "Samsung BR", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_br.m3u"},
+    {"name": "Samsung CH", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_ch.m3u"},
+    {"name": "Samsung DE", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_de.m3u"},
+    {"name": "Samsung ES", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_es.m3u"},
+    {"name": "Samsung FR", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_fr.m3u"},
+    {"name": "Samsung GB", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_gb.m3u"},
+    {"name": "Samsung IN", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_in.m3u"},
+    {"name": "Samsung IT", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_it.m3u"},
+    {"name": "Samsung KR", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_kr.m3u"},
+    {"name": "Samsung US", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_us.m3u"},
+
     {"heading": "▶️ Other FAST Services"},
     {"name": "Roku All", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/roku_all.m3u"},
-    {"name": "SamsungTVPlus All", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_all.m3u"},
     {"name": "Tubi All", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/tubi_all.m3u"}
 ]
 
@@ -61,44 +73,49 @@ def get_status_info(url):
 
 def send_to_discord(report_lines, total_channels):
     webhook_url = os.getenv("DISCORD_WEBHOOK")
-    if not webhook_url: return
+    if not webhook_url: 
+        print("Error: DISCORD_WEBHOOK environment variable not set.")
+        return
     
+    # Split status text if it's too long for a single embed (Discord limit is 4096)
     status_text = "\n".join(report_lines)
-    description = f"{status_text}\n\n**Total Network Capacity:** `{total_channels}` Channels"
     
     data = {
         "username": "Stream Health Monitor",
         "embeds": [{
             "title": "📡 Stream Network Status",
-            "description": description,
+            "description": f"{status_text}\n\n**Total Network Capacity:** `{total_channels}` Channels",
             "color": 3262548,
             "timestamp": datetime.utcnow().isoformat()
         }]
     }
-    requests.post(webhook_url, json=data)
+    r = requests.post(webhook_url, json=data)
+    if r.status_code != 204:
+        print(f"Discord Error: {r.status_code} - {r.text}")
 
 def update_dashboard():
     now = datetime.now().strftime("%Y-%m-%d %H:%M UTC")
     total_channels = 0
-    category_badge = "![Header](https://img.shields.io/badge/-%20-31c854?style=flat-square)"
     
-    content = ["# 📡 Stream Network Status", f"**Last Sync:** `{now}`", "", "| Status | Repo Streams | Direct Access |", "| :--- | :--- | :--- |"]
+    # GitHub Markdown (No badge in header row)
+    content = ["# 📡 Stream Network Status", f"**Last Sync:** `{now}`", "", "| Status | Repo Streams | Direct Access |", "| :---: | :--- | :--- |"]
     discord_report = []
 
     for item in STREAMS:
         if "heading" in item:
             header = item["heading"]
-            content.append(f"| {category_badge} | **{header}** | |")
-            discord_report.append(f"\n🟢 **{header}**")
+            content.append(f"| | **{header}** | |")
+            discord_report.append(f"\n**{header}**")
             continue
 
         badge, count, dot = get_status_info(item['url'])
         total_channels += count
         
-        content.append(f"| {badge} | **{item['name']}**: ({count} channels) | [Link]({item['url']}) |")
+        content.append(f"| {badge} | **{item['name']}** ({count} channels) | [M3U8 Link]({item['url']}) |")
         discord_report.append(f"{dot} [**{item['name']}**]({item['url']}) — `{count}`")
 
     content.append(f"\n> **Total Network Capacity:** `{total_channels}` Channels")
+    
     with open("README.md", "w", encoding="utf-8") as f:
         f.write("\n".join(content))
     
