@@ -16,6 +16,7 @@ STREAMS = [
     {"name": "Plex US", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_us.m3u"},
     {"heading": "▶️ PlutoTV Regional"},
     {"name": "PlutoTV All", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_all.m3u"},
+    {"name": "PlutoTV AT", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_at.m3u"},
     {"name": "PlutoTV BR", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_br.m3u"},
     {"name": "PlutoTV CA", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_ca.m3u"},
     {"name": "PlutoTV DE", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_de.m3u"},
@@ -31,6 +32,7 @@ STREAMS = [
     {"heading": "▶️ SamsungTVPlus Regional"},
     {"name": "Samsung All", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_all.m3u"},
     {"name": "Samsung AT", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_at.m3u"},
+    {"name": "Samsung BR", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_br.m3u"},
     {"name": "Samsung CH", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_ch.m3u"},
     {"name": "Samsung DE", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_de.m3u"},
     {"name": "Samsung ES", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_es.m3u"},
@@ -50,8 +52,7 @@ def get_status(url):
         r = requests.get(url, timeout=10)
         if r.status_code == 200:
             count = len(re.findall(r'^#EXTINF', r.text, re.MULTILINE))
-            badge = "![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square)"
-            dot = "🟢"
+            badge, dot = "![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square)", "🟢"
             return count, badge, dot
         return 0, "![Offline](https://img.shields.io/badge/Status-Offline-critical?style=flat-square)", "🔴"
     except:
@@ -59,9 +60,9 @@ def get_status(url):
 
 def run():
     webhook = os.getenv("DISCORD_FAST_WEBHOOK")
-    discord_report = []
-    readme_rows = []
-    total = 0
+    msg_id = os.getenv("DISCORD_FAST_MESSAGE_ID")
+    discord_report, readme_rows, total = [], [], 0
+
     for s in STREAMS:
         if "heading" in s:
             discord_report.append(f"\n**{s['heading']}**")
@@ -72,15 +73,10 @@ def run():
         readme_rows.append(f"| {badge} | **{s['name']}** ({count}) | [Link]({s['url']}) |")
         discord_report.append(f"{dot} **{s['name']}** ({count}) — [[Link]]({s['url']})")
     
+    payload = {"username": "Stream Monitor", "embeds": [{"title": "🚀 FAST Health Check", "description": "\n".join(discord_report) + f"\n\n**Total:** `{total}`", "color": 3262548, "timestamp": datetime.utcnow().isoformat()}]}
     if webhook:
-        # Split into 3 embeds to safely avoid the Discord 4096 character limit
-        chunk = len(discord_report) // 3
-        payload = {"username": "Stream Monitor", "embeds": [
-            {"title": "🚀 FAST Health Check (1/3)", "description": "\n".join(discord_report[:chunk]), "color": 3262548},
-            {"title": "🚀 FAST Health Check (2/3)", "description": "\n".join(discord_report[chunk:chunk*2]), "color": 3262548},
-            {"title": "🚀 FAST Health Check (3/3)", "description": "\n".join(discord_report[chunk*2:]) + f"\n\n**Total:** `{total}`", "color": 3262548, "timestamp": datetime.utcnow().isoformat()}
-        ]}
-        requests.post(webhook, json=payload)
+        if msg_id: requests.patch(f"{webhook}/messages/{msg_id}", json=payload)
+        else: requests.post(f"{webhook}?wait=true", json=payload)
     with open("temp_fast.txt", "w") as f: f.write("\n".join(readme_rows))
 
 if __name__ == "__main__":
