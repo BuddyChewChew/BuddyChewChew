@@ -2,7 +2,7 @@ name: 🔄 Split Dashboard Update
 
 on:
   schedule:
-    - cron: '0 * * * *'  # Runs at the start of every hour
+    - cron: '0 * * * *'  # Every hour
   workflow_dispatch:     # Manual trigger
 
 permissions:
@@ -25,10 +25,8 @@ jobs:
 
       - name: 🛰️ Run Health Checks
         env:
-          # Webhook URLs
           DISCORD_LIVE_WEBHOOK: ${{ secrets.DISCORD_LIVE_WEBHOOK }}
           DISCORD_FAST_WEBHOOK: ${{ secrets.DISCORD_FAST_WEBHOOK }}
-          # Message IDs (Crucial for the "auto-replace" feature)
           DISCORD_LIVE_MESSAGE_ID: ${{ secrets.DISCORD_LIVE_MESSAGE_ID }}
           DISCORD_FAST_MESSAGE_ID: ${{ secrets.DISCORD_FAST_MESSAGE_ID }}
         run: |
@@ -43,7 +41,6 @@ jobs:
           echo "# 📡 Stream Network Status" > README.md
           echo "Last Sync: \`$(date -u +'%Y-%m-%d %H:%M:%S UTC')\`" >> README.md
           echo "" >> README.md
-          
           echo "| Status | Stream Name | Source |" >> README.md
           echo "| :---: | :--- | :--- |" >> README.md
           
@@ -56,6 +53,4 @@ jobs:
           if ! git diff --cached --quiet; then
             git commit -m "📡 Dashboard Update: $(date -u)"
             git push origin main
-          else
-            echo "✅ No status changes detected in streams."
           fi
