@@ -2,8 +2,8 @@ name: 🏆 Daily Sports Guide
 
 on:
   schedule:
-    - cron: '0 13 * * *'  # Runs every day at 8:00 AM EST
-  workflow_dispatch:      # Allows you to trigger it manually from the Actions tab
+    - cron: '0 13 * * *'  # Runs daily at 9:00 AM EST
+  workflow_dispatch:      # Manual trigger for testing
 
 permissions:
   contents: read
