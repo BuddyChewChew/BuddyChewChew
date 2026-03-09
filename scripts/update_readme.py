@@ -3,8 +3,9 @@ import re
 import os
 from datetime import datetime
 
-# Exact filenames from your app-m3u-generator/playlists directory
+# Organized with "heading" keys to trigger visible labels
 STREAMS = [
+    {"heading": "⭐ Primary Streams"},
     {"name": "Live Events Filter", "url": "https://raw.githubusercontent.com/BuddyChewChew/sports/refs/heads/main/liveeventsfilter.m3u8"},
     {"name": "Roxie Streams", "url": "https://raw.githubusercontent.com/BuddyChewChew/sports/refs/heads/main/Roxiestreams.m3u"},
     {"name": "Power V2", "url": "https://raw.githubusercontent.com/BuddyChewChew/sports/refs/heads/main/powerv2/powerv2.m3u8"},
@@ -12,7 +13,8 @@ STREAMS = [
     {"name": "The TV App", "url": "https://raw.githubusercontent.com/BuddyChewChew/My-Streams/refs/heads/main/TheTVApp.m3u8"},
     {"name": "TV Main", "url": "https://raw.githubusercontent.com/BuddyChewChew/My-Streams/refs/heads/main/tv.m3u"},
     {"name": "AX1S", "url": "https://raw.githubusercontent.com/BuddyChewChew/My-Streams/refs/heads/main/AX1S.m3u8"},
-    # Plex Regional Playlists
+    
+    {"heading": "🎥 Plex Regional"},
     {"name": "Plex All", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_all.m3u"},
     {"name": "Plex AU", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_au.m3u"},
     {"name": "Plex CA", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_ca.m3u"},
@@ -22,7 +24,8 @@ STREAMS = [
     {"name": "Plex MX", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_mx.m3u"},
     {"name": "Plex NZ", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_nz.m3u"},
     {"name": "Plex US", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_us.m3u"},
-    # PlutoTV Regional Playlists
+    
+    {"heading": "🌌 PlutoTV Regional"},
     {"name": "PlutoTV All", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_all.m3u"},
     {"name": "PlutoTV AU", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_au.m3u"},
     {"name": "PlutoTV BR", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_br.m3u"},
@@ -37,7 +40,8 @@ STREAMS = [
     {"name": "PlutoTV NO", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_no.m3u"},
     {"name": "PlutoTV SE", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_se.m3u"},
     {"name": "PlutoTV US", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_us.m3u"},
-    # Other FAST Services
+    
+    {"heading": "📱 Other FAST Services"},
     {"name": "Roku All", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/roku_all.m3u"},
     {"name": "SamsungTVPlus All", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_all.m3u"},
     {"name": "Tubi All", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/tubi_all.m3u"}
@@ -57,8 +61,10 @@ def get_status_info(url):
 def send_to_discord(report_lines, total_channels):
     webhook_url = os.getenv("DISCORD_WEBHOOK")
     if not webhook_url: return
+    
     status_text = "\n".join(report_lines)
     description = f"{status_text}\n\n**Total Network Capacity:** `{total_channels}` Channels"
+    
     data = {
         "username": "Stream Health Monitor",
         "embeds": [{
@@ -76,15 +82,28 @@ def update_dashboard():
     content = ["# 📡 Stream Network Status", f"**Last Sync:** `{now}`", "", "| 📺 Repo Streams | Direct Access |", "| :--- | :--- |"]
     discord_report = []
 
-    for stream in STREAMS:
-        badge, count, text_status = get_status_info(stream['url'])
+    for item in STREAMS:
+        # Check if this is a heading
+        if "heading" in item:
+            header = item["heading"]
+            content.append(f"| **{header}** | |")
+            discord_report.append(f"\n**{header}**")
+            continue
+
+        # Otherwise, process as a stream
+        badge, count, text_status = get_status_info(item['url'])
         total_channels += count
-        content.append(f"| 📺 {badge} **{stream['name']}**: ({count} channels) | [M3U8 Link]({stream['url']}) |")
-        discord_report.append(f"📺 {text_status} **{stream['name']}**: ({count} channels)")
+        
+        # GitHub Table
+        content.append(f"| 📺 {badge} **{item['name']}**: ({count} channels) | [M3U8 Link]({item['url']}) |")
+        
+        # Discord Line
+        discord_report.append(f"📺 {text_status} [**{item['name']}**]({item['url']}): ({count} channels)")
 
     content.append(f"\n> **Total Network Capacity:** `{total_channels}` Channels")
     with open("README.md", "w", encoding="utf-8") as f:
         f.write("\n".join(content))
+    
     send_to_discord(discord_report, total_channels)
 
 if __name__ == "__main__":
