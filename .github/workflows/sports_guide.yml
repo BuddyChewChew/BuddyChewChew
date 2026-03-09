@@ -3,7 +3,7 @@ name: 🏆 Daily Sports Guide
 on:
   schedule:
     - cron: '0 13 * * *'  # Runs daily at 9:00 AM EST
-  workflow_dispatch:      # Manual trigger for testing
+  workflow_dispatch:      # Manual trigger
 
 permissions:
   contents: read
@@ -26,4 +26,5 @@ jobs:
       - name: 🏟️ Run Sports Guide Script
         env:
           DISCORD_SPORTS_WEBHOOK: ${{ secrets.DISCORD_SPORTS_WEBHOOK }}
+          DISCORD_SPORTS_MESSAGE_ID: ${{ secrets.DISCORD_SPORTS_MESSAGE_ID }}
         run: python scripts/sport_guide.py
