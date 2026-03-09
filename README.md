@@ -1,54 +1,24 @@
-# 📡 Stream Network Status
-Last Sync: `2026-03-09 05:17:04 UTC`
+<div align="center">
 
-| Status | Stream Name | Source |
-| :---: | :--- | :--- |
-| | **⭐ Primary Streams** | |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **💥Live Events Filter** (153) | [Link](https://raw.githubusercontent.com/BuddyChewChew/sports/refs/heads/main/liveeventsfilter.m3u8) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **💥Roxie Streams** (0) | [Link](https://raw.githubusercontent.com/BuddyChewChew/sports/refs/heads/main/Roxiestreams.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **💥Power V2** (8) | [Link](https://raw.githubusercontent.com/BuddyChewChew/sports/refs/heads/main/powerv2/powerv2.m3u8) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺TV Pass** (151) | [Link](https://raw.githubusercontent.com/BuddyChewChew/buddylive/refs/heads/main/buddylive_v1.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺The TV App** (288) | [Link](https://raw.githubusercontent.com/BuddyChewChew/My-Streams/refs/heads/main/TheTVApp.m3u8) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺TV** (508) | [Link](https://raw.githubusercontent.com/BuddyChewChew/My-Streams/refs/heads/main/tv.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺AX1S** (201) | [Link](https://raw.githubusercontent.com/BuddyChewChew/My-Streams/refs/heads/main/AX1S.m3u8) || | **Plex Regional** | |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺Plex All** (2598) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_all.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺Plex AU** (275) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_au.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺Plex CA** (442) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_ca.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺Plex ES** (271) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_es.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺Plex FR** (243) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_fr.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺Plex GB** (334) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_gb.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺Plex MX** (283) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_mx.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺Plex NZ** (258) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_nz.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺Plex US** (678) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_us.m3u) |
-| | **PlutoTV Regional** | |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺PlutoTV All** (2733) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_all.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺PlutoTV AR** (186) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_ar.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺PlutoTV BR** (169) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_br.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺PlutoTV CA** (210) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_ca.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺PlutoTV CL** (185) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_cl.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺PlutoTV DE** (190) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_de.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺PlutoTV DK** (231) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_dk.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺PlutoTV ES** (144) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_es.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺PlutoTV FR** (131) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_fr.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺PlutoTV GB** (199) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_gb.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺PlutoTV IT** (110) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_it.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺PlutoTV MX** (189) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_mx.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺PlutoTV NO** (180) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_no.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺PlutoTV SE** (198) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_se.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺PlutoTV US** (411) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_us.m3u) |
-| | **SamsungTVPlus Regional** | |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺Samsung All** (2367) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_all.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺Samsung AT** (139) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_at.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺Samsung CA** (275) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_ca.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺Samsung CH** (143) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_ch.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺Samsung DE** (184) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_de.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺Samsung ES** (175) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_es.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺Samsung FR** (161) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_fr.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺Samsung GB** (238) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_gb.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺Samsung IN** (164) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_in.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺Samsung IT** (172) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_it.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺Samsung KR** (178) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_kr.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺Samsung US** (538) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_us.m3u) |
-| | **Other FAST Services** | |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺Roku All** (355) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/roku_all.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺Tubi All** (165) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/tubi_all.m3u) |
+<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=35&pause=1000&color=7B68EE&center=true&vCenter=true&width=600&lines=DISCLAIMER&height=70" alt="Typing SVG" />
+
+</div>
+
+## 
+> ⚠️ The scripts and links provided on these GitHub Repos are for informational and educational purposes only. All links and information are publicly available on the web. We do not claim responsibility for any issues, damages, or losses that may arise from the use of these scripts or links. Users are advised to use them at their own risk and discretion.
+>
+> No Warranty: The scripts and information are provided 'as is,' without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose, and non-infringement. We make no guarantee that the scripts will be error-free or suitable for any specific purpose.
+>
+> External Links Disclaimer: This repository contains links to third-party websites or content. We do not control, endorse, or assume responsibility for the content, privacy policies, or practices of any third-party websites or services.
+>
+> Always review and test any code or links before implementing them in your projects. You assume all risks associated with the implementation of this information.
+
+## 
+
+<p align="center">
+  <img src="https://img.shields.io/github/stars/BuddyChewChew?style=for-the-badge&logo=github&color=2f2f2f" alt="Stars"> <img src="https://img.shields.io/github/followers/BuddyChewChew?style=for-the-badge&logo=github&color=2f2f2f" alt="Followers"> <img src="https://komarev.com/ghpvc/?username=BuddyChewChew&style=for-the-badge&color=2f2f2f" alt="Visitors">
+  <br>
+  <a href="https://ko-fi.com/buddychewchew"><img src="https://img.shields.io/badge/Donate%20KO--FI-2f2f2f?style=for-the-badge&logo=ko-fi&logoColor=white" alt="Donate Ko-fi"></a> <a href="https://buymeacoffee.com/buddychewchew"><img src="https://img.shields.io/badge/Buy%20Me%20A%20Coffee-2f2f2f?style=for-the-badge&logo=buy-me-a-coffee&logoColor=white" alt="Buy Me A Coffee"></a> <a href="https://github.com/BuddyChewChew/My-Streams/blob/main/Donate/readme.md"><img src="https://img.shields.io/badge/Donate%20In%20Crypto-2f2f2f?style=for-the-badge&logo=bitcoin&logoColor=white" alt="Donate In Crypto"></a>
+  <br>
+  <a href="https://discord.gg/fnsWGDy2mm"><img src="https://img.shields.io/badge/Discord-2f2f2f?style=for-the-badge&logo=discord&logoColor=white" alt="Discord"></a>
+</p>
