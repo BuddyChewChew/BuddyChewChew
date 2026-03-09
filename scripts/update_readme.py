@@ -3,7 +3,7 @@ import re
 import os
 from datetime import datetime
 
-# Full manual list with every regional file from your repository
+# Full manual list with your requested icons and regional files
 STREAMS = [
     {"heading": "⭐ Primary Streams"},
     {"name": "Live Events Filter", "url": "https://raw.githubusercontent.com/BuddyChewChew/sports/refs/heads/main/liveeventsfilter.m3u8"},
@@ -14,7 +14,7 @@ STREAMS = [
     {"name": "TV Main", "url": "https://raw.githubusercontent.com/BuddyChewChew/My-Streams/refs/heads/main/tv.m3u"},
     {"name": "AX1S", "url": "https://raw.githubusercontent.com/BuddyChewChew/My-Streams/refs/heads/main/AX1S.m3u8"},
     
-    {"heading": "🎥 Plex Regional"},
+    {"heading": "▶️ Plex Regional"},
     {"name": "Plex All", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_all.m3u"},
     {"name": "Plex AU", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_au.m3u"},
     {"name": "Plex CA", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_ca.m3u"},
@@ -25,7 +25,7 @@ STREAMS = [
     {"name": "Plex NZ", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_nz.m3u"},
     {"name": "Plex US", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_us.m3u"},
     
-    {"heading": "🌌 PlutoTV Regional"},
+    {"heading": "▶️ PlutoTV Regional"},
     {"name": "PlutoTV All", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_all.m3u"},
     {"name": "PlutoTV AT", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_at.m3u"},
     {"name": "PlutoTV AU", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_au.m3u"},
@@ -42,14 +42,10 @@ STREAMS = [
     {"name": "PlutoTV SE", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_se.m3u"},
     {"name": "PlutoTV US", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_us.m3u"},
     
-    {"heading": "📱 Other FAST Services"},
+    {"heading": "▶️ Other FAST Services"},
     {"name": "Roku All", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/roku_all.m3u"},
     {"name": "SamsungTVPlus All", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_all.m3u"},
-    {"name": "Stirr All", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/stirr_all.m3u"},
-    {"name": "Tubi All", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/tubi_all.m3u"},
-    {"name": "Xumo", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/xumo.m3u"},
-    {"name": "LocalNow", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/localnow.m3u"},
-    {"name": "Mojo", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/mojo.m3u"}
+    {"name": "Tubi All", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/tubi_all.m3u"}
 ]
 
 def get_status_info(url):
@@ -57,11 +53,11 @@ def get_status_info(url):
         response = requests.get(url, timeout=10)
         if response.status_code == 200:
             count = len(re.findall(r'^#EXTINF', response.text, re.MULTILINE))
-            badge = "![Online](https://img.shields.io/badge/-Online-31c854?style=flat-square)"
-            return badge, count, "🟢 Online"
-        return "![Offline](https://img.shields.io/badge/-Offline-critical?style=flat-square)", 0, "🔴 Offline"
+            badge = "![Online](https://img.shields.io/badge/-%20-31c854?style=flat-square)"
+            return badge, count, "🟢"
+        return "![Offline](https://img.shields.io/badge/-%20-critical?style=flat-square)", 0, "🔴"
     except:
-        return "![Down](https://img.shields.io/badge/-Down-grey?style=flat-square)", 0, "⚪ Down"
+        return "![Down](https://img.shields.io/badge/-%20-grey?style=flat-square)", 0, "⚪"
 
 def send_to_discord(report_lines, total_channels):
     webhook_url = os.getenv("DISCORD_WEBHOOK")
@@ -75,7 +71,7 @@ def send_to_discord(report_lines, total_channels):
         "embeds": [{
             "title": "📡 Stream Network Status",
             "description": description,
-            "color": 3066993,
+            "color": 3262548,
             "timestamp": datetime.utcnow().isoformat()
         }]
     }
@@ -84,24 +80,23 @@ def send_to_discord(report_lines, total_channels):
 def update_dashboard():
     now = datetime.now().strftime("%Y-%m-%d %H:%M UTC")
     total_channels = 0
-    content = ["# 📡 Stream Network Status", f"**Last Sync:** `{now}`", "", "| 📺 Repo Streams | Direct Access |", "| :--- | :--- |"]
+    category_badge = "![Header](https://img.shields.io/badge/-%20-31c854?style=flat-square)"
+    
+    content = ["# 📡 Stream Network Status", f"**Last Sync:** `{now}`", "", "| Status | Repo Streams | Direct Access |", "| :--- | :--- | :--- |"]
     discord_report = []
 
     for item in STREAMS:
         if "heading" in item:
             header = item["heading"]
-            content.append(f"| **{header}** | |")
-            discord_report.append(f"\n**{header}**")
+            content.append(f"| {category_badge} | **{header}** | |")
+            discord_report.append(f"\n🟢 **{header}**")
             continue
 
-        badge, count, text_status = get_status_info(item['url'])
+        badge, count, dot = get_status_info(item['url'])
         total_channels += count
         
-        # GitHub Table Row
-        content.append(f"| 📺 {badge} **{item['name']}**: ({count} channels) | [M3U8 Link]({item['url']}) |")
-        
-        # Discord Embed Line (with hyperlinks)
-        discord_report.append(f"📺 {text_status} [**{item['name']}**]({item['url']}): ({count} channels)")
+        content.append(f"| {badge} | **{item['name']}**: ({count} channels) | [Link]({item['url']}) |")
+        discord_report.append(f"{dot} [**{item['name']}**]({item['url']}) — `{count}`")
 
     content.append(f"\n> **Total Network Capacity:** `{total_channels}` Channels")
     with open("README.md", "w", encoding="utf-8") as f:
