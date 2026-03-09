@@ -1,5 +1,5 @@
 # 📡 Stream Network Status
-Last Sync: `2026-03-09 05:10:46 UTC`
+Last Sync: `2026-03-09 05:12:31 UTC`
 
 | Status | Stream Name | Source |
 | :---: | :--- | :--- |
@@ -7,7 +7,7 @@ Last Sync: `2026-03-09 05:10:46 UTC`
 | ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **💥Live Events Filter** (153) | [Link](https://raw.githubusercontent.com/BuddyChewChew/sports/refs/heads/main/liveeventsfilter.m3u8) |
 | ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **💥Roxie Streams** (0) | [Link](https://raw.githubusercontent.com/BuddyChewChew/sports/refs/heads/main/Roxiestreams.m3u) |
 | ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **💥Power V2** (8) | [Link](https://raw.githubusercontent.com/BuddyChewChew/sports/refs/heads/main/powerv2/powerv2.m3u8) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺Buddy Live V1** (151) | [Link](https://raw.githubusercontent.com/BuddyChewChew/buddylive/refs/heads/main/buddylive_v1.m3u) |
+| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺TV Pass** (151) | [Link](https://raw.githubusercontent.com/BuddyChewChew/buddylive/refs/heads/main/buddylive_v1.m3u) |
 | ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺The TV App** (288) | [Link](https://raw.githubusercontent.com/BuddyChewChew/My-Streams/refs/heads/main/TheTVApp.m3u8) |
 | ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺TV** (508) | [Link](https://raw.githubusercontent.com/BuddyChewChew/My-Streams/refs/heads/main/tv.m3u) |
 | ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺AX1S** (201) | [Link](https://raw.githubusercontent.com/BuddyChewChew/My-Streams/refs/heads/main/AX1S.m3u8) || | **Plex Regional** | |
