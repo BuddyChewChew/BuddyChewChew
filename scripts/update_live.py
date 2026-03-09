@@ -20,12 +20,13 @@ def get_status(url):
         r = requests.get(url, timeout=10)
         if r.status_code == 200:
             count = len(re.findall(r'^#EXTINF', r.text, re.MULTILINE))
-            badge = "![Online](https://img.shields.io/badge/-%20-31c854?style=flat-square)"
+            # Pill Style Badge (Status: Online)
+            badge = "![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square)"
             dot = "🟢"
             return count, badge, dot
-        return 0, "![Offline](https://img.shields.io/badge/-%20-critical?style=flat-square)", "🔴"
+        return 0, "![Offline](https://img.shields.io/badge/Status-Offline-critical?style=flat-square)", "🔴"
     except:
-        return 0, "![Down](https://img.shields.io/badge/-%20-grey?style=flat-square)", "⚪"
+        return 0, "![Down](https://img.shields.io/badge/Status-Down-grey?style=flat-square)", "⚪"
 
 def run():
     webhook = os.getenv("DISCORD_LIVE_WEBHOOK")
@@ -44,7 +45,6 @@ def run():
         readme_rows.append(f"| {badge} | **{s['name']}** ({count}) | [Link]({s['url']}) |")
         discord_report.append(f"{dot} **{s['name']}** — `{count}`")
     
-    # Send to Discord (Primary Streams Channel)
     if webhook:
         payload = {
             "username": "Stream Monitor",
@@ -57,7 +57,6 @@ def run():
         }
         requests.post(webhook, json=payload)
     
-    # Save for README generation in Workflow
     with open("temp_live.txt", "w") as f:
         f.write("\n".join(readme_rows))
 
