@@ -3,7 +3,7 @@ import os
 from datetime import datetime
 
 # Direct live sports link
-LIVE_GUIDE_URL = "https://sport-tv-guide.live/live/sport"
+LIVE_GUIDE_URL = "https://sport-tv-guide.live/live/allsports"
 
 def run():
     webhook_url = os.getenv("DISCORD_SPORTS_WEBHOOK")
