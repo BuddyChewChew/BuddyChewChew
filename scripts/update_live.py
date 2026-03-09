@@ -42,7 +42,7 @@ def run():
     payload = {
         "username": "Stream Monitor",
         "embeds": [{
-            "title": "📺 Live TV Health Check",
+            "title": "📡 Live TV Health Check",
             "description": "\n".join(discord_report) + f"\n\n**Total:** `{total}`",
             "color": 3262548,
             "timestamp": datetime.utcnow().isoformat()
@@ -61,5 +61,6 @@ def run():
 
 if __name__ == "__main__":
     run()
+
 
 
