@@ -1,5 +1,5 @@
 # 📡 Stream Network Status
-Last Sync: `2026-03-09 03:40:52 UTC`
+Last Sync: `2026-03-09 03:54:45 UTC`
 
 | Status | Stream Name | Source |
 | :---: | :--- | :--- |
@@ -22,7 +22,6 @@ Last Sync: `2026-03-09 03:40:52 UTC`
 | ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **Plex US** (678) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_us.m3u) |
 | | **▶️ PlutoTV Regional** | |
 | ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **PlutoTV All** (2733) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_all.m3u) |
-| ![Offline](https://img.shields.io/badge/Status-Offline-critical?style=flat-square) | **PlutoTV AT** (0) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_at.m3u) |
 | ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **PlutoTV BR** (169) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_br.m3u) |
 | ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **PlutoTV CA** (210) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_ca.m3u) |
 | ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **PlutoTV DE** (190) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_de.m3u) |
@@ -38,7 +37,6 @@ Last Sync: `2026-03-09 03:40:52 UTC`
 | | **▶️ SamsungTVPlus Regional** | |
 | ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **Samsung All** (2367) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_all.m3u) |
 | ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **Samsung AT** (139) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_at.m3u) |
-| ![Offline](https://img.shields.io/badge/Status-Offline-critical?style=flat-square) | **Samsung BR** (0) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_br.m3u) |
 | ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **Samsung CH** (143) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_ch.m3u) |
 | ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **Samsung DE** (184) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_de.m3u) |
 | ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **Samsung ES** (175) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_es.m3u) |
