@@ -32,25 +32,3 @@ jobs:
         run: |
           python scripts/update_live.py
           python scripts/update_fast.py
-
-      - name: 💾 Build README & Push
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions@users.noreply.github.com"
-          
-          echo "# 📡 Stream Network Status" > README.md
-          echo "Last Sync: \`$(date -u +'%Y-%m-%d %H:%M:%S UTC')\`" >> README.md
-          echo "" >> README.md
-          echo "| Status | Stream Name | Source |" >> README.md
-          echo "| :---: | :--- | :--- |" >> README.md
-          
-          if [ -f temp_live.txt ]; then cat temp_live.txt >> README.md; fi
-          if [ -f temp_fast.txt ]; then cat temp_fast.txt >> README.md; fi
-          
-          rm -f temp_live.txt temp_fast.txt
-          
-          git add README.md
-          if ! git diff --cached --quiet; then
-            git commit -m "📡 Dashboard Update: $(date -u)"
-            git push origin main
-          fi
