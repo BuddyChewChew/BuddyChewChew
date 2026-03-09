@@ -3,7 +3,7 @@ import re
 import os
 from datetime import datetime
 
-# Full list of all regional and FAST service streams
+# Full List of Regional and FAST Services
 STREAMS = [
     {"heading": "▶️ Plex Regional"},
     {"name": "Plex All", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_all.m3u"},
@@ -47,62 +47,4 @@ STREAMS = [
     {"name": "Samsung US", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_us.m3u"},
 
     {"heading": "▶️ Other FAST Services"},
-    {"name": "Roku All", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/roku_all.m3u"},
-    {"name": "Tubi All", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/tubi_all.m3u"}
-]
-
-def get_status(url):
-    try:
-        r = requests.get(url, timeout=10)
-        if r.status_code == 200:
-            count = len(re.findall(r'^#EXTINF', r.text, re.MULTILINE))
-            badge = "![Online](https://img.shields.io/badge/-%20-31c854?style=flat-square)"
-            dot = "🟢"
-            return count, badge, dot
-        return 0, "![Offline](https://img.shields.io/badge/-%20-critical?style=flat-square)", "🔴"
-    except:
-        return 0, "![Down](https://img.shields.io/badge/-%20-grey?style=flat-square)", "⚪"
-
-def run():
-    webhook = os.getenv("DISCORD_FAST_WEBHOOK")
-    discord_report = []
-    readme_rows = []
-    total_channels = 0
-    
-    for s in STREAMS:
-        if "heading" in s:
-            discord_report.append(f"\n**{s['heading']}**")
-            readme_rows.append(f"| | **{s['heading']}** | |")
-            continue
-            
-        count, badge, dot = get_status(s['url'])
-        total_channels += count
-        readme_rows.append(f"| {badge} | **{s['name']}** ({count}) | [Link]({s['url']}) |")
-        discord_report.append(f"{dot} **{s['name']}** — `{count}`")
-    
-    if webhook:
-        # Split report into two embeds if needed to prevent Discord 400 errors
-        midpoint = len(discord_report) // 2
-        payload = {
-            "username": "Stream Monitor",
-            "embeds": [
-                {
-                    "title": "🚀 FAST Service Health Check (Part 1)",
-                    "description": "\n".join(discord_report[:midpoint]),
-                    "color": 3262548
-                },
-                {
-                    "title": "🚀 FAST Service Health Check (Part 2)",
-                    "description": "\n".join(discord_report[midpoint:]) + f"\n\n**Total FAST Capacity:** `{total_channels}`",
-                    "color": 3262548,
-                    "timestamp": datetime.utcnow().isoformat()
-                }
-            ]
-        }
-        requests.post(webhook, json=payload)
-    
-    with open("temp_fast.txt", "w") as f:
-        f.write("\n".join(readme_rows))
-
-if __name__ == "__main__":
-    run()
+    {"name": "Roku
