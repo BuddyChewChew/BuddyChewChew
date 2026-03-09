@@ -52,8 +52,7 @@ def get_status(url):
         r = requests.get(url, timeout=10)
         if r.status_code == 200:
             count = len(re.findall(r'^#EXTINF', r.text, re.MULTILINE))
-            badge, dot = "![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square)", "🟢"
-            return count, badge, dot
+            return count, "![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square)", "🟢"
         return 0, "![Offline](https://img.shields.io/badge/Status-Offline-critical?style=flat-square)", "🔴"
     except:
         return 0, "![Down](https://img.shields.io/badge/Status-Down-grey?style=flat-square)", "⚪"
@@ -61,22 +60,36 @@ def get_status(url):
 def run():
     webhook = os.getenv("DISCORD_FAST_WEBHOOK")
     msg_id = os.getenv("DISCORD_FAST_MESSAGE_ID")
-    discord_report, readme_rows, total = [], [], 0
+    report_p1, report_p2, readme_rows, total = [], [], [], 0
 
-    for s in STREAMS:
+    for i, s in enumerate(STREAMS):
         if "heading" in s:
-            discord_report.append(f"\n**{s['heading']}**")
+            target = report_p1 if i < 25 else report_p2
+            target.append(f"\n**{s['heading']}**")
             readme_rows.append(f"| | **{s['heading']}** | |")
             continue
         count, badge, dot = get_status(s['url'])
         total += count
         readme_rows.append(f"| {badge} | **{s['name']}** ({count}) | [Link]({s['url']}) |")
-        discord_report.append(f"{dot} **{s['name']}** ({count}) — [[Link]]({s['url']})")
+        line = f"{dot} **{s['name']}** ({count}) — [[Link]]({s['url']})"
+        if i < 25: report_p1.append(line)
+        else: report_p2.append(line)
     
-    payload = {"username": "Stream Monitor", "embeds": [{"title": "🚀 FAST Health Check", "description": "\n".join(discord_report) + f"\n\n**Total:** `{total}`", "color": 3262548, "timestamp": datetime.utcnow().isoformat()}]}
+    payload = {
+        "username": "Stream Monitor",
+        "embeds": [
+            {"title": "🚀 FAST Health Check (Part 1)", "description": "\n".join(report_p1), "color": 3262548},
+            {"title": "🚀 FAST Health Check (Part 2)", "description": "\n".join(report_p2) + f"\n\n**Total:** `{total}`", "color": 3262548, "timestamp": datetime.utcnow().isoformat()}
+        ]
+    }
+
     if webhook:
-        if msg_id: requests.patch(f"{webhook}/messages/{msg_id}", json=payload)
-        else: requests.post(f"{webhook}?wait=true", json=payload)
+        if msg_id and msg_id.strip():
+            res = requests.patch(f"{webhook}/messages/{msg_id}", json=payload)
+            if res.status_code != 200: requests.post(webhook, json=payload)
+        else:
+            requests.post(webhook, json=payload)
+
     with open("temp_fast.txt", "w") as f: f.write("\n".join(readme_rows))
 
 if __name__ == "__main__":
