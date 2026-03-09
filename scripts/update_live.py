@@ -19,8 +19,7 @@ def get_status(url):
         r = requests.get(url, timeout=10)
         if r.status_code == 200:
             count = len(re.findall(r'^#EXTINF', r.text, re.MULTILINE))
-            badge, dot = "![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square)", "🟢"
-            return count, badge, dot
+            return count, "![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square)", "🟢"
         return 0, "![Offline](https://img.shields.io/badge/Status-Offline-critical?style=flat-square)", "🔴"
     except:
         return 0, "![Down](https://img.shields.io/badge/Status-Down-grey?style=flat-square)", "⚪"
@@ -40,10 +39,24 @@ def run():
         readme_rows.append(f"| {badge} | **{s['name']}** ({count}) | [Link]({s['url']}) |")
         discord_report.append(f"{dot} **{s['name']}** ({count}) — [[Link]]({s['url']})")
     
-    payload = {"username": "Stream Monitor", "embeds": [{"title": "📺 Live TV Health Check", "description": "\n".join(discord_report) + f"\n\n**Total:** `{total}`", "color": 3262548, "timestamp": datetime.utcnow().isoformat()}]}
+    payload = {
+        "username": "Stream Monitor",
+        "embeds": [{
+            "title": "📺 Live TV Health Check",
+            "description": "\n".join(discord_report) + f"\n\n**Total:** `{total}`",
+            "color": 3262548,
+            "timestamp": datetime.utcnow().isoformat()
+        }]
+    }
+
     if webhook:
-        if msg_id: requests.patch(f"{webhook}/messages/{msg_id}", json=payload)
-        else: requests.post(f"{webhook}?wait=true", json=payload)
+        if msg_id and msg_id.strip():
+            print(f"Editing Live message: {msg_id}")
+            res = requests.patch(f"{webhook}/messages/{msg_id}", json=payload)
+            if res.status_code != 200: requests.post(webhook, json=payload)
+        else:
+            requests.post(webhook, json=payload)
+
     with open("temp_live.txt", "w") as f: f.write("\n".join(readme_rows))
 
 if __name__ == "__main__":
