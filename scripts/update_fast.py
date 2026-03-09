@@ -76,8 +76,8 @@ def run():
     payload = {
         "username": "Stream Monitor",
         "embeds": [
-            {"title": "🚀 FAST Health Check (Part 1)", "description": "\n".join(report_p1), "color": 3262548},
-            {"title": "🚀 FAST Health Check (Part 2)", "description": "\n".join(report_p2) + f"\n\n**Total:** `{total}`", "color": 3262548, "timestamp": datetime.utcnow().isoformat()}
+            {"title": "Health Check (Part 1)", "description": "\n".join(report_p1), "color": 3262548},
+            {"title": "Continued (Part 2)", "description": "\n".join(report_p2) + f"\n\n**Total:** `{total}`", "color": 3262548, "timestamp": datetime.utcnow().isoformat()}
         ]
     }
 
