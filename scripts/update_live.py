@@ -3,6 +3,7 @@ import re
 import os
 from datetime import datetime
 
+# Primary Streams List
 STREAMS = [
     {"heading": "⭐ Primary Streams"},
     {"name": "Live Events Filter", "url": "https://raw.githubusercontent.com/BuddyChewChew/sports/refs/heads/main/liveeventsfilter.m3u8"},
@@ -30,24 +31,34 @@ def run():
     webhook = os.getenv("DISCORD_LIVE_WEBHOOK")
     discord_report = []
     readme_rows = []
-    total = 0
+    total_channels = 0
+    
     for s in STREAMS:
         if "heading" in s:
             discord_report.append(f"\n**{s['heading']}**")
             readme_rows.append(f"| | **{s['heading']}** | |")
             continue
+            
         count, badge, dot = get_status(s['url'])
-        total += count
+        total_channels += count
         readme_rows.append(f"| {badge} | **{s['name']}** ({count}) | [Link]({s['url']}) |")
-        # Added the [Link] next to the name for Discord
+        # Clickable link for Discord
         discord_report.append(f"{dot} **{s['name']}** ({count}) — [[Link]]({s['url']})")
     
     if webhook:
-        requests.post(webhook, json={
+        payload = {
             "username": "Stream Monitor",
-            "embeds": [{"title": "📺 Live TV Health Check", "description": "\n".join(discord_report) + f"\n\n**Total:** `{total}`", "color": 3262548, "timestamp": datetime.utcnow().isoformat()}]
-        })
-    with open("temp_live.txt", "w") as f: f.write("\n".join(readme_rows))
+            "embeds": [{
+                "title": "📺 Live TV Health Check",
+                "description": "\n".join(discord_report) + f"\n\n**Total Live Channels:** `{total_channels}`",
+                "color": 3262548,
+                "timestamp": datetime.utcnow().isoformat()
+            }]
+        }
+        requests.post(webhook, json=payload)
+    
+    with open("temp_live.txt", "w") as f:
+        f.write("\n".join(readme_rows))
 
 if __name__ == "__main__":
     run()
