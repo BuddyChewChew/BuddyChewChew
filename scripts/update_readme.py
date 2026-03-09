@@ -3,7 +3,7 @@ import re
 import os
 from datetime import datetime
 
-# Full list strictly following your repository file structure
+# Comprehensive list strictly following your repo structure
 STREAMS = [
     {"heading": "⭐ Primary Streams"},
     {"name": "Live Events Filter", "url": "https://raw.githubusercontent.com/BuddyChewChew/sports/refs/heads/main/liveeventsfilter.m3u8"},
@@ -73,31 +73,35 @@ def get_status_info(url):
 
 def send_to_discord(report_lines, total_channels):
     webhook_url = os.getenv("DISCORD_WEBHOOK")
-    if not webhook_url: 
-        print("Error: DISCORD_WEBHOOK environment variable not set.")
-        return
-    
-    # Split status text if it's too long for a single embed (Discord limit is 4096)
-    status_text = "\n".join(report_lines)
-    
+    if not webhook_url: return
+
+    # Discord has a 4096 character limit per embed. We split the list to be safe.
+    half = len(report_lines) // 2
+    part1 = "\n".join(report_lines[:half])
+    part2 = "\n".join(report_lines[half:])
+
     data = {
         "username": "Stream Health Monitor",
-        "embeds": [{
-            "title": "📡 Stream Network Status",
-            "description": f"{status_text}\n\n**Total Network Capacity:** `{total_channels}` Channels",
-            "color": 3262548,
-            "timestamp": datetime.utcnow().isoformat()
-        }]
+        "embeds": [
+            {
+                "title": "📡 Stream Network Status (Part 1)",
+                "description": part1,
+                "color": 3262548
+            },
+            {
+                "title": "📡 Stream Network Status (Part 2)",
+                "description": f"{part2}\n\n**Total Network Capacity:** `{total_channels}` Channels",
+                "color": 3262548,
+                "timestamp": datetime.utcnow().isoformat()
+            }
+        ]
     }
     r = requests.post(webhook_url, json=data)
-    if r.status_code != 204:
-        print(f"Discord Error: {r.status_code} - {r.text}")
+    print(f"Discord Response: {r.status_code}")
 
 def update_dashboard():
     now = datetime.now().strftime("%Y-%m-%d %H:%M UTC")
     total_channels = 0
-    
-    # GitHub Markdown (No badge in header row)
     content = ["# 📡 Stream Network Status", f"**Last Sync:** `{now}`", "", "| Status | Repo Streams | Direct Access |", "| :---: | :--- | :--- |"]
     discord_report = []
 
@@ -110,9 +114,8 @@ def update_dashboard():
 
         badge, count, dot = get_status_info(item['url'])
         total_channels += count
-        
         content.append(f"| {badge} | **{item['name']}** ({count} channels) | [M3U8 Link]({item['url']}) |")
-        discord_report.append(f"{dot} [**{item['name']}**]({item['url']}) — `{count}`")
+        discord_report.append(f"{dot} **{item['name']}** — `{count}`")
 
     content.append(f"\n> **Total Network Capacity:** `{total_channels}` Channels")
     
