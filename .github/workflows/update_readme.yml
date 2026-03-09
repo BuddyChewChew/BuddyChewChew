@@ -3,10 +3,10 @@ name: 🔄 Split Dashboard Update
 on:
   schedule:
     - cron: '0 * * * *'  # Runs at the start of every hour
-  workflow_dispatch:     # Allows you to click "Run workflow" for testing
+  workflow_dispatch:     # Manual trigger
 
 permissions:
-  contents: write        # Essential for the bot to update your README
+  contents: write
 
 jobs:
   update:
@@ -25,10 +25,13 @@ jobs:
 
       - name: 🛰️ Run Health Checks
         env:
+          # Webhook URLs
           DISCORD_LIVE_WEBHOOK: ${{ secrets.DISCORD_LIVE_WEBHOOK }}
           DISCORD_FAST_WEBHOOK: ${{ secrets.DISCORD_FAST_WEBHOOK }}
+          # Message IDs (Crucial for the "auto-replace" feature)
+          DISCORD_LIVE_MESSAGE_ID: ${{ secrets.DISCORD_LIVE_MESSAGE_ID }}
+          DISCORD_FAST_MESSAGE_ID: ${{ secrets.DISCORD_FAST_MESSAGE_ID }}
         run: |
-          # Executes both scripts located in your /scripts folder
           python scripts/update_live.py
           python scripts/update_fast.py
 
@@ -37,23 +40,18 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions@users.noreply.github.com"
           
-          # 1. Start the README with your header
           echo "# 📡 Stream Network Status" > README.md
           echo "Last Sync: \`$(date -u +'%Y-%m-%d %H:%M:%S UTC')\`" >> README.md
           echo "" >> README.md
           
-          # 2. Add the Table Header
           echo "| Status | Stream Name | Source |" >> README.md
           echo "| :---: | :--- | :--- |" >> README.md
           
-          # 3. Inject the results from your Python scripts
           if [ -f temp_live.txt ]; then cat temp_live.txt >> README.md; fi
           if [ -f temp_fast.txt ]; then cat temp_fast.txt >> README.md; fi
           
-          # 4. Cleanup temp files so they don't get committed
           rm -f temp_live.txt temp_fast.txt
           
-          # 5. Commit and Push changes
           git add README.md
           if ! git diff --cached --quiet; then
             git commit -m "📡 Dashboard Update: $(date -u)"
