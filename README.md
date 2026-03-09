@@ -1,5 +1,5 @@
 # 📡 Stream Network Status
-Last Sync: `2026-03-09 05:12:31 UTC`
+Last Sync: `2026-03-09 05:14:50 UTC`
 
 | Status | Stream Name | Source |
 | :---: | :--- | :--- |
@@ -11,15 +11,15 @@ Last Sync: `2026-03-09 05:12:31 UTC`
 | ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺The TV App** (288) | [Link](https://raw.githubusercontent.com/BuddyChewChew/My-Streams/refs/heads/main/TheTVApp.m3u8) |
 | ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺TV** (508) | [Link](https://raw.githubusercontent.com/BuddyChewChew/My-Streams/refs/heads/main/tv.m3u) |
 | ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺AX1S** (201) | [Link](https://raw.githubusercontent.com/BuddyChewChew/My-Streams/refs/heads/main/AX1S.m3u8) || | **Plex Regional** | |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **Plex All** (2598) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_all.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **Plex AU** (275) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_au.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **Plex CA** (442) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_ca.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **Plex ES** (271) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_es.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **Plex FR** (243) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_fr.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **Plex GB** (334) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_gb.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **Plex MX** (283) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_mx.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **Plex NZ** (258) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_nz.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **Plex US** (678) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_us.m3u) |
+| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺Plex All** (2598) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_all.m3u) |
+| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺Plex AU** (275) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_au.m3u) |
+| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺Plex CA** (442) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_ca.m3u) |
+| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺Plex ES** (271) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_es.m3u) |
+| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺Plex FR** (243) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_fr.m3u) |
+| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺Plex GB** (334) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_gb.m3u) |
+| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺Plex MX** (283) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_mx.m3u) |
+| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺Plex NZ** (258) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_nz.m3u) |
+| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺Plex US** (678) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plex_us.m3u) |
 | | **PlutoTV Regional** | |
 | ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **PlutoTV All** (2733) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_all.m3u) |
 | ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **PlutoTV AR** (186) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_ar.m3u) |
@@ -50,5 +50,5 @@ Last Sync: `2026-03-09 05:12:31 UTC`
 | ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **Samsung KR** (178) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_kr.m3u) |
 | ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **Samsung US** (538) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_us.m3u) |
 | | **Other FAST Services** | |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **Roku All** (355) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/roku_all.m3u) |
-| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **Tubi All** (165) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/tubi_all.m3u) |
+| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺Roku All** (355) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/roku_all.m3u) |
+| ![Online](https://img.shields.io/badge/Status-Online-31c854?style=flat-square) | **📺Tubi All** (165) | [Link](https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/tubi_all.m3u) |
