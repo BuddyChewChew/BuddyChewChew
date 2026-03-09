@@ -7,6 +7,7 @@ LIVE_GUIDE_URL = "https://sport-tv-guide.live/live/sport"
 
 def run():
     webhook_url = os.getenv("DISCORD_SPORTS_WEBHOOK")
+    message_id = os.getenv("DISCORD_SPORTS_MESSAGE_ID")
     
     if not webhook_url:
         print("Error: DISCORD_SPORTS_WEBHOOK secret not found.")
@@ -37,11 +38,20 @@ def run():
     }
 
     try:
-        response = requests.post(webhook_url, json=payload)
-        if response.status_code == 204:
-            print(f"Successfully posted to #sports-guide at {current_time_12h}")
+        if message_id:
+            # Edit the existing message
+            edit_url = f"{webhook_url}/messages/{message_id}"
+            response = requests.patch(edit_url, json=payload)
+            action = "updated"
         else:
-            print(f"Failed to post. Status: {response.status_code}")
+            # Send a fresh message
+            response = requests.post(webhook_url, json=payload)
+            action = "posted"
+
+        if response.status_code in [200, 204]:
+            print(f"Successfully {action} sports guide at {current_time_12h}.")
+        else:
+            print(f"Failed. Status: {response.status_code} - {response.text}")
     except Exception as e:
         print(f"Error: {e}")
 
