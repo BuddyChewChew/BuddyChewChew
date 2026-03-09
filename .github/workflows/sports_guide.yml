@@ -2,8 +2,8 @@ name: 🏆 Daily Sports Guide
 
 on:
   schedule:
-    - cron: '30 12 * * *'  # Runs once a day at 7:30 AM EST (12:30 UTC)
-  workflow_dispatch:       # Allows you to run it manually whenever you want
+    - cron: '30 12 * * *'  # Runs once a day (7:30 AM EST)
+  workflow_dispatch:       # Allows you to click "Run workflow" manually
 
 jobs:
   post_guide:
@@ -22,6 +22,6 @@ jobs:
 
       - name: 🏟️ Run Sports Guide Script
         env:
-          # Use your existing Live Webhook or a new one if you prefer
+          # Reusing your existing secret is fine!
           DISCORD_LIVE_WEBHOOK: ${{ secrets.DISCORD_LIVE_WEBHOOK }}
         run: python scripts/sport_guide.py
