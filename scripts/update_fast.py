@@ -31,9 +31,18 @@ STREAMS = [
     {"name": "PlutoTV US", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/plutotv_us.m3u"},
     {"heading": "▶️ SamsungTVPlus Regional"},
     {"name": "Samsung All", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_all.m3u"},
-    {"name": "Samsung US", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_us.m3u"},
+    {"name": "Samsung AT", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_at.m3u"},
+    {"name": "Samsung BR", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_br.m3u"},
+    {"name": "Samsung CH", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_ch.m3u"},
+    {"name": "Samsung DE", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_de.m3u"},
+    {"name": "Samsung ES", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_es.m3u"},
+    {"name": "Samsung FR", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_fr.m3u"},
     {"name": "Samsung GB", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_gb.m3u"},
-    {"heading": "▶️ Other FAST"},
+    {"name": "Samsung IN", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_in.m3u"},
+    {"name": "Samsung IT", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_it.m3u"},
+    {"name": "Samsung KR", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_kr.m3u"},
+    {"name": "Samsung US", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_us.m3u"},
+    {"heading": "▶️ Other FAST Services"},
     {"name": "Roku All", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/roku_all.m3u"},
     {"name": "Tubi All", "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/tubi_all.m3u"}
 ]
@@ -63,14 +72,15 @@ def run():
         count, badge, dot = get_status(s['url'])
         total += count
         readme_rows.append(f"| {badge} | **{s['name']}** ({count}) | [Link]({s['url']}) |")
-        # Added clickable [Link] for Discord embed
         discord_report.append(f"{dot} **{s['name']}** ({count}) — [[Link]]({s['url']})")
     
     if webhook:
-        mid = len(discord_report) // 2
+        # Split into 3 embeds to safely avoid the Discord 4096 character limit
+        chunk = len(discord_report) // 3
         payload = {"username": "Stream Monitor", "embeds": [
-            {"title": "🚀 FAST Health Check (1)", "description": "\n".join(discord_report[:mid]), "color": 3262548},
-            {"title": "🚀 FAST Health Check (2)", "description": "\n".join(discord_report[mid:]) + f"\n\n**Total:** `{total}`", "color": 3262548, "timestamp": datetime.utcnow().isoformat()}
+            {"title": "🚀 FAST Health Check (1/3)", "description": "\n".join(discord_report[:chunk]), "color": 3262548},
+            {"title": "🚀 FAST Health Check (2/3)", "description": "\n".join(discord_report[chunk:chunk*2]), "color": 3262548},
+            {"title": "🚀 FAST Health Check (3/3)", "description": "\n".join(discord_report[chunk*2:]) + f"\n\n**Total:** `{total}`", "color": 3262548, "timestamp": datetime.utcnow().isoformat()}
         ]}
         requests.post(webhook, json=payload)
     with open("temp_fast.txt", "w") as f: f.write("\n".join(readme_rows))
